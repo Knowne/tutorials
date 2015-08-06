@@ -11,6 +11,7 @@
 	</properties>
 
 	<build>
+		<finalName>TutorialSpringWebserviceWsdlGenerator</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -37,7 +38,7 @@
 						<id>generate-wsdl</id>
 						<phase>process-classes</phase>
 						<configuration>
-							<className>tutorial.spring.wsdl.generator.ws.ClientWS</className>
+							<className>tutorial.spring.webservice.wsdl.generator.ws.ClientWS</className>
 							<genWsdl>true</genWsdl>
 							<verbose>true</verbose>
 						</configuration>

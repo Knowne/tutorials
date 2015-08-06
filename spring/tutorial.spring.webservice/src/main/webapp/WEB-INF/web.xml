@@ -4,5 +4,22 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<display-name>tutorial.spring.webservice</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/spring-context.xml</param-value>
+	</context-param>
 
+	<listener>
+		<listener-class>org.springframework.web.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>CXFServlet</servlet-name>
+	<url-pattern>/*</url-pattern>
+	</servlet-mapping>
 </web-app>

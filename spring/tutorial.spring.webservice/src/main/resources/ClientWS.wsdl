@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="ClientWSService" targetNamespace="http://ws.generator.wsdl.spring.tutorial/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.generator.wsdl.spring.tutorial/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:definitions name="ClientWSService" targetNamespace="http://ws.generator.wsdl.webservice.spring.tutorial/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.generator.wsdl.webservice.spring.tutorial/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
-<xs:schema xmlns:tns="http://ws.generator.wsdl.spring.tutorial/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://ws.generator.wsdl.spring.tutorial/" version="1.0">
+<xs:schema xmlns:tns="http://ws.generator.wsdl.webservice.spring.tutorial/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://ws.generator.wsdl.webservice.spring.tutorial/" version="1.0">
 
   <xs:element name="addClient" type="tns:addClient"/>
 
@@ -62,14 +62,6 @@
 
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="addClientResponse">
-    <wsdl:part name="parameters" element="tns:addClientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="addClient">
-    <wsdl:part name="parameters" element="tns:addClient">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="remClient">
     <wsdl:part name="parameters" element="tns:remClient">
     </wsdl:part>
@@ -84,6 +76,14 @@
   </wsdl:message>
   <wsdl:message name="getClientResponse">
     <wsdl:part name="parameters" element="tns:getClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addClient">
+    <wsdl:part name="parameters" element="tns:addClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addClientResponse">
+    <wsdl:part name="parameters" element="tns:addClientResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="ClientWS">
