@@ -1,9 +1,9 @@
-package tutorial.spring.wsdl.generator.ws;
+package tutorial.spring.webservice.wsdl.generator.ws;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import tutorial.spring.wsdl.generator.domain.Client;
+import tutorial.spring.webservice.wsdl.generator.domain.Client;
 
 @WebService
 public interface ClientWS {

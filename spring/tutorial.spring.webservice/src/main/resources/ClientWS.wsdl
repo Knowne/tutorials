@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ClientWSService" targetNamespace="http://ws.generator.wsdl.spring.tutorial/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.generator.wsdl.spring.tutorial/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://ws.generator.wsdl.spring.tutorial/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://ws.generator.wsdl.spring.tutorial/" version="1.0">
+
+  <xs:element name="addClient" type="tns:addClient"/>
+
+  <xs:element name="addClientResponse" type="tns:addClientResponse"/>
+
+  <xs:element name="getClient" type="tns:getClient"/>
+
+  <xs:element name="getClientResponse" type="tns:getClientResponse"/>
+
+  <xs:element name="remClient" type="tns:remClient"/>
+
+  <xs:element name="remClientResponse" type="tns:remClientResponse"/>
+
+  <xs:complexType name="remClient">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nif" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="remClientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:client"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="client">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="nif" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getClient">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nif" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getClientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:client"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addClient">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="client" type="tns:client"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addClientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:client"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addClientResponse">
+    <wsdl:part name="parameters" element="tns:addClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addClient">
+    <wsdl:part name="parameters" element="tns:addClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remClient">
+    <wsdl:part name="parameters" element="tns:remClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClient">
+    <wsdl:part name="parameters" element="tns:getClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remClientResponse">
+    <wsdl:part name="parameters" element="tns:remClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClientResponse">
+    <wsdl:part name="parameters" element="tns:getClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientWS">
+    <wsdl:operation name="remClient">
+      <wsdl:input name="remClient" message="tns:remClient">
+    </wsdl:input>
+      <wsdl:output name="remClientResponse" message="tns:remClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClient">
+      <wsdl:input name="getClient" message="tns:getClient">
+    </wsdl:input>
+      <wsdl:output name="getClientResponse" message="tns:getClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addClient">
+      <wsdl:input name="addClient" message="tns:addClient">
+    </wsdl:input>
+      <wsdl:output name="addClientResponse" message="tns:addClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClientWSServiceSoapBinding" type="tns:ClientWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="remClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="remClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="remClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addClient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addClient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientWSService">
+    <wsdl:port name="ClientWSPort" binding="tns:ClientWSServiceSoapBinding">
+      <soap:address location="http://localhost:9090/ClientWSPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

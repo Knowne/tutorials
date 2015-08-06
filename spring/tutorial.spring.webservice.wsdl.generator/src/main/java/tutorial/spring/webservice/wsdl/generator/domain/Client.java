@@ -1,4 +1,4 @@
-package tutorial.spring.wsdl.generator.domain;
+package tutorial.spring.webservice.wsdl.generator.domain;
 
 import java.io.Serializable;
 
