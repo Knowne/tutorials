@@ -1,11 +1,13 @@
 package tutorial.spring.webservice.bsl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import tutorial.spring.webservice.dao.ClientEntity;
 import tutorial.spring.webservice.dao.repository.ClientRepository;
 import tutorial.spring.webservice.wsdl.generator.ws.Client;
 
+@Component
 public class ClientBSLImpl implements ClientBSL {
 
 	@Autowired
