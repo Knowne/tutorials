@@ -1,5 +1,7 @@
 package tutorial.spring.webservice.bsl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import tutorial.spring.webservice.wsdl.generator.ws.Client;
@@ -12,5 +14,7 @@ public interface ClientBSL {
 	public Client getClient(Integer nif);
 
 	public Client addClient(Client client);
+	
+	public List<Client> findClientByFirstName(String firstName);
 
 }

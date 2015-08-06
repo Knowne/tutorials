@@ -1,5 +1,7 @@
 package tutorial.spring.webservice;
 
+import java.util.List;
+
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,14 @@ public class ClientWSImpl implements ClientWS {
 		if (client != null)
 			return clientBSL.addClient(client);
 		else
+			return null;
+	}
+
+	@Override
+	public List<Client> findClientByFirstName(String firstName) {
+		if (firstName != null) {
+			return clientBSL.findClientByFirstName(firstName);
+		} else
 			return null;
 	}
 

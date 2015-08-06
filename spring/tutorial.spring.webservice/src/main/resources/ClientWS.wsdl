@@ -7,6 +7,10 @@
 
   <xs:element name="addClientResponse" type="tns:addClientResponse"/>
 
+  <xs:element name="findClientByFirstName" type="tns:findClientByFirstName"/>
+
+  <xs:element name="findClientByFirstNameResponse" type="tns:findClientByFirstNameResponse"/>
+
   <xs:element name="getClient" type="tns:getClient"/>
 
   <xs:element name="getClientResponse" type="tns:getClientResponse"/>
@@ -48,6 +52,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="findClientByFirstName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findClientByFirstNameResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:client"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="addClient">
     <xs:sequence>
       <xs:element minOccurs="0" name="client" type="tns:client"/>
@@ -70,12 +86,20 @@
     <wsdl:part name="parameters" element="tns:getClient">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findClientByFirstName">
+    <wsdl:part name="parameters" element="tns:findClientByFirstName">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="remClientResponse">
     <wsdl:part name="parameters" element="tns:remClientResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getClientResponse">
     <wsdl:part name="parameters" element="tns:getClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findClientByFirstNameResponse">
+    <wsdl:part name="parameters" element="tns:findClientByFirstNameResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="addClient">
@@ -97,6 +121,12 @@
       <wsdl:input name="getClient" message="tns:getClient">
     </wsdl:input>
       <wsdl:output name="getClientResponse" message="tns:getClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findClientByFirstName">
+      <wsdl:input name="findClientByFirstName" message="tns:findClientByFirstName">
+    </wsdl:input>
+      <wsdl:output name="findClientByFirstNameResponse" message="tns:findClientByFirstNameResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="addClient">
@@ -123,6 +153,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findClientByFirstName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findClientByFirstName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findClientByFirstNameResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

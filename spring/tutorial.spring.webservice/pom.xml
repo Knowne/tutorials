@@ -9,6 +9,7 @@
 	<properties>
 		<cxf.version>3.1.1</cxf.version>
 		<java.version>1.8</java.version>
+		<junit.version>4.12</junit.version>
 		<org.hibernate.version>4.3.10.Final</org.hibernate.version>
 		<org.postgresql.version>9.4-1201-jdbc41</org.postgresql.version>
 		<org.springframework.version>4.2.0.RELEASE</org.springframework.version>
@@ -64,6 +65,19 @@
 			<version>${org.postgresql.version}</version>
 		</dependency>
 
+		<!-- Tests -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
 
 
 	</dependencies>

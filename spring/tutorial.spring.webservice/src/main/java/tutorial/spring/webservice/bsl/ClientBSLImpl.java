@@ -1,5 +1,8 @@
 package tutorial.spring.webservice.bsl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +52,25 @@ public class ClientBSLImpl implements ClientBSL {
 		if (clientRepository.findByNif(client.getNif()) == null) {
 			clientRepository.save(new ClientEntity(client.getFirstName(), client.getLastName(), client.getEmail(), client.getNif()));
 			return client;
+		} else
+			return null;
+	}
+
+	@Override
+	public List<Client> findClientByFirstName(String firstName) {
+		List<ClientEntity> clients = clientRepository.findByFirstName(firstName);
+
+		if (clients != null) {
+			List<Client> listOfClients = new ArrayList<Client>();
+			for (ClientEntity client : clients) {
+				Client newClient = new Client();
+				newClient.setFirstName(client.getFirstName());
+				newClient.setLastName(client.getLastName());
+				newClient.setEmail(client.getEmail());
+				newClient.setNif(client.getNif());
+				listOfClients.add(newClient);
+			}
+			return listOfClients;
 		} else
 			return null;
 	}
