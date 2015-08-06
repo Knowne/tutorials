@@ -5,7 +5,7 @@ import javax.jws.WebService;
 import tutorial.spring.webservice.wsdl.generator.ws.Client;
 import tutorial.spring.webservice.wsdl.generator.ws.ClientWS;
 
-@WebService(endpointInterface = "tutorial.spring.webservice.wsdl.generator.ClientWS")
+@WebService(endpointInterface = "tutorial.spring.webservice.wsdl.generator.ws.ClientWS")
 public class ClientWSImpl implements ClientWS {
 
 	@Override
