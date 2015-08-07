@@ -48,4 +48,9 @@ public class ClientWSImpl implements ClientWS {
 			return null;
 	}
 
+	@Override
+	public List<Client> getAllClients() {
+		return clientBSL.findAllClients();
+	}
+
 }

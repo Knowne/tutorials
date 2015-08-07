@@ -72,7 +72,24 @@ public class ClientBSLImpl implements ClientBSL {
 			}
 			return listOfClients;
 		} else
-			return null;
+			return new ArrayList<Client>();
+	}
+
+	@Override
+	public List<Client> findAllClients() {
+		Iterable<ClientEntity> allClients = clientRepository.findAll();
+		List<Client> clients = new ArrayList<Client>();
+
+		for (ClientEntity clientEntity : allClients) {
+			Client client = new Client();
+			client.setFirstName(clientEntity.getFirstName());
+			client.setLastName(clientEntity.getLastName());
+			client.setEmail(clientEntity.getEmail());
+			client.setNif(clientEntity.getNif());
+
+			clients.add(client);
+		}
+		return clients;
 	}
 
 }

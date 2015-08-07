@@ -1,5 +1,6 @@
 package tutorial.spring.webservice.dao;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ public class ClientEntity {
 
 	private String email;
 
+	@Column(unique = true, nullable = false)
 	private Integer nif;
 
 	public ClientEntity() {

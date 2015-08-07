@@ -14,7 +14,9 @@ public interface ClientBSL {
 	public Client getClient(Integer nif);
 
 	public Client addClient(Client client);
-	
+
 	public List<Client> findClientByFirstName(String firstName);
+
+	public List<Client> findAllClients();
 
 }

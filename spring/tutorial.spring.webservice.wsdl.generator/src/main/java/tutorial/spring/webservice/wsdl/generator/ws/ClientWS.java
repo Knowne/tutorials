@@ -18,4 +18,6 @@ public interface ClientWS {
 
 	public List<Client> findClientByFirstName(String firstName);
 
+	public List<Client> getAllClients();
+
 }

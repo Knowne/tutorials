@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="212cf178-dbf5-44c5-83d8-c6f1dcba9064" activeEnvironment="Default" name="clientWS" resourceRoot="" soapui-version="5.2.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a19c4c6a-e2b0-4810-9799-3e3c27a8c615" wsaVersion="NONE" name="ClientWSImplServiceSoapBinding" type="wsdl" bindingName="{http://webservice.spring.tutorial/}ClientWSImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl"><con:part><con:url>http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ClientWSImplService" targetNamespace="http://webservice.spring.tutorial/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.spring.tutorial/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://ws.generator.wsdl.webservice.spring.tutorial/">
+<con:soapui-project id="212cf178-dbf5-44c5-83d8-c6f1dcba9064" activeEnvironment="Default" name="clientWS" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a19c4c6a-e2b0-4810-9799-3e3c27a8c615" wsaVersion="NONE" name="ClientWSImplServiceSoapBinding" type="wsdl" bindingName="{http://webservice.spring.tutorial/}ClientWSImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl"><con:part><con:url>http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ClientWSImplService" targetNamespace="http://webservice.spring.tutorial/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.spring.tutorial/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://ws.generator.wsdl.webservice.spring.tutorial/">
   <wsdl:import location="http://localhost:8080/TutorialSpringWebservice/clientWS?wsdl=ClientWS.wsdl" namespace="http://ws.generator.wsdl.webservice.spring.tutorial/"></wsdl:import>
   <wsdl:binding name="ClientWSImplServiceSoapBinding" type="ns1:ClientWS">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -12,12 +12,30 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllClients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllClientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getClient">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getClient">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getClientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findClientByFirstName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findClientByFirstName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findClientByFirstNameResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -41,6 +59,10 @@
     <xs:schema targetNamespace="http://ws.generator.wsdl.webservice.spring.tutorial/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.generator.wsdl.webservice.spring.tutorial/">
       <xs:element name="addClient" type="tns:addClient"/>
       <xs:element name="addClientResponse" type="tns:addClientResponse"/>
+      <xs:element name="findClientByFirstName" type="tns:findClientByFirstName"/>
+      <xs:element name="findClientByFirstNameResponse" type="tns:findClientByFirstNameResponse"/>
+      <xs:element name="getAllClients" type="tns:getAllClients"/>
+      <xs:element name="getAllClientsResponse" type="tns:getAllClientsResponse"/>
       <xs:element name="getClient" type="tns:getClient"/>
       <xs:element name="getClientResponse" type="tns:getClientResponse"/>
       <xs:element name="remClient" type="tns:remClient"/>
@@ -63,6 +85,14 @@
           <xs:element minOccurs="0" name="nif" type="xs:int"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="getAllClients">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getAllClientsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:client"/>
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="getClient">
         <xs:sequence>
           <xs:element minOccurs="0" name="nif" type="xs:int"/>
@@ -71,6 +101,16 @@
       <xs:complexType name="getClientResponse">
         <xs:sequence>
           <xs:element minOccurs="0" name="return" type="tns:client"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findClientByFirstName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findClientByFirstNameResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:client"/>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="addClient">
@@ -88,14 +128,26 @@
   <wsdl:message name="remClient">
     <wsdl:part element="ns1:remClient" name="parameters"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getAllClients">
+    <wsdl:part element="ns1:getAllClients" name="parameters"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getClient">
     <wsdl:part element="ns1:getClient" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findClientByFirstName">
+    <wsdl:part element="ns1:findClientByFirstName" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="remClientResponse">
     <wsdl:part element="ns1:remClientResponse" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getClientResponse">
     <wsdl:part element="ns1:getClientResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllClientsResponse">
+    <wsdl:part element="ns1:getAllClientsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findClientByFirstNameResponse">
+    <wsdl:part element="ns1:findClientByFirstNameResponse" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="addClient">
     <wsdl:part element="ns1:addClient" name="parameters"></wsdl:part>
@@ -108,9 +160,17 @@
       <wsdl:input message="ns1:remClient" name="remClient"></wsdl:input>
       <wsdl:output message="ns1:remClientResponse" name="remClientResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <wsdl:input message="ns1:getAllClients" name="getAllClients"></wsdl:input>
+      <wsdl:output message="ns1:getAllClientsResponse" name="getAllClientsResponse"></wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getClient">
       <wsdl:input message="ns1:getClient" name="getClient"></wsdl:input>
       <wsdl:output message="ns1:getClientResponse" name="getClientResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findClientByFirstName">
+      <wsdl:input message="ns1:findClientByFirstName" name="findClientByFirstName"></wsdl:input>
+      <wsdl:output message="ns1:findClientByFirstNameResponse" name="findClientByFirstNameResponse"></wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="addClient">
       <wsdl:input message="ns1:addClient" name="addClient"></wsdl:input>
@@ -134,6 +194,23 @@
          </client>
       </ws:addClient>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/addClient"/><con:wsrmConfig version="1.2"/></con:call><con:call id="16ddd420-0c6a-477f-8253-771f364de5f6" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/TutorialSpringWebservice/clientWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.generator.wsdl.webservice.spring.tutorial/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:addClient>
+         <!--Optional:-->
+         <client>
+            <!--Optional:-->
+            <firstName>João</firstName>
+            <!--Optional:-->
+            <lastName>Mocked</lastName>
+            <!--Optional:-->
+            <email>joao.mocked@email.com</email>
+            <!--Optional:-->
+            <nif>87654321</nif>
+         </client>
+      </ws:addClient>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/addClient"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ff6a8934-9210-4ae3-9115-b6c95e5813ba" isOneWay="false" action="" name="getClient" bindingOperationName="getClient" type="Request-Response" outputName="getClientResponse" inputName="getClient" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="07674357-4b59-451c-83f9-9c69022b9b50" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/TutorialSpringWebservice/clientWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.generator.wsdl.webservice.spring.tutorial/">
    <soapenv:Header/>
    <soapenv:Body>
@@ -150,4 +227,17 @@
          <nif>12345678</nif>
       </ws:remClient>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/remClient"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/remClient"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="fbaed96b-d728-481a-b089-bb7a51ff80f2" isOneWay="false" action="" name="findClientByFirstName" bindingOperationName="findClientByFirstName" type="Request-Response" outputName="findClientByFirstNameResponse" inputName="findClientByFirstName" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="50ef41e7-9ca1-4de9-9d04-fdc133bf7155" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/TutorialSpringWebservice/clientWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.generator.wsdl.webservice.spring.tutorial/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:findClientByFirstName>
+         <!--Optional:-->
+         <arg0>João</arg0>
+      </ws:findClientByFirstName>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/findClientByFirstName"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d3b40d48-0e26-436d-9ad9-9fbe83def7a2" isOneWay="false" action="" name="getAllClients" bindingOperationName="getAllClients" type="Request-Response" outputName="getAllClientsResponse" inputName="getAllClients" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="08dbae85-1b02-41e4-bb93-306c1f7aabbc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/TutorialSpringWebservice/clientWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.generator.wsdl.webservice.spring.tutorial/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:getAllClients/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://webservice.spring.tutorial/ClientWS/getAllClients"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
